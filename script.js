@@ -1,5 +1,5 @@
 let nombre = "juan"
-let apellido = "perez"
+let apellido = "pepe"
 let edad = 30
 let sobrenombre = " usted es muy bueno"
 
