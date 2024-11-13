@@ -44,3 +44,23 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+.recuadro {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.recuadro .imagenes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.recuadro img {
+    max-width: 30%;
+    height: auto;
+    margin: 10px;
+    display: block;
+}
