@@ -1,47 +1,71 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Lista de instrumentos musicales
     const instrumentos = [
-        { id: 1, nombre: 'Guitarra Gibson', precio: 500000 },
-        { id: 2, nombre: 'Guitarra Ibanez Gio', precio: 45000 },
-        { id: 3, nombre: 'Guitarra Jackson', precio: 70000 },
-        { id: 4, nombre: 'Batería Musical Premium', precio: 80000 },
-        { id: 5, nombre: 'Batería Pearl', precio: 90000 },
-        { id: 6, nombre: 'Batería Yamaha', precio: 100000 },
-        { id: 7, nombre: 'Bajo Cort', precio: 110000 },
-        { id: 8, nombre: 'Bajo Fender', precio: 120000 },
-        { id: 9, nombre: 'Bajo Warwick', precio: 130000 }
+        { id: 1, nombre: 'Guitarra Gibson', precio: 500000, imagen: 'images/guitarras/gibson.jpg' },
+        { id: 2, nombre: 'Guitarra Ibanez Gio', precio: 45000, imagen: 'images/guitarras/ibanez_gio.jpg' },
+        { id: 3, nombre: 'Guitarra Jackson', precio: 70000, imagen: 'images/guitarras/jackson.jpg' },
+        { id: 4, nombre: 'Batería Musical Premium', precio: 80000, imagen: 'images/baterias/bateria-musical-premium.jpg' },
+        { id: 5, nombre: 'Batería Pearl', precio: 90000, imagen: 'images/baterias/pearl.jpg' },
+        { id: 6, nombre: 'Batería Yamaha', precio: 100000, imagen: 'images/baterias/yamaha.jpg' },
+        { id: 7, nombre: 'Bajo Cort', precio: 110000, imagen: 'images/bajos/cort.jpg' },
+        { id: 8, nombre: 'Bajo Fender', precio: 120000, imagen: 'images/bajos/fender.jpg' },
+        { id: 9, nombre: 'Bajo Warwick', precio: 130000, imagen: 'images/bajos/warwick.jpg' }
     ];
 
     // Funcionalidad básica de carrito de compras
-    const carrito = [];
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     function actualizarIconoCarrito() {
         const carritoCount = document.getElementById('carrito-count');
         if (carritoCount) {
-            carritoCount.textContent = carrito.length;
+            carritoCount.textContent = carrito.reduce((sum, item) => sum + item.cantidad, 0);
         }
+    }
+
+    function guardarCarrito() {
+        localStorage.setItem('carrito', JSON.stringify(carrito));
     }
 
     function agregarAlCarrito(id) {
         const instrumento = instrumentos.find(instr => instr.id === id);
         if (instrumento) {
-            carrito.push(instrumento);
+            const itemCarrito = carrito.find(item => item.id === id);
+            if (itemCarrito) {
+                itemCarrito.cantidad++;
+            } else {
+                carrito.push({ ...instrumento, cantidad: 1 });
+            }
             console.log(`Agregado al carrito: ${instrumento.nombre}`);
             actualizarIconoCarrito();
+            guardarCarrito();
         } else {
             console.log('Instrumento no encontrado');
         }
     }
 
     function eliminarDelCarrito(id) {
-        const indice = carrito.findIndex(instr => instr.id === id);
-        if (indice !== -1) {
-            const instrumentoEliminado = carrito.splice(indice, 1);
-            console.log(`Eliminado del carrito: ${instrumentoEliminado[0].nombre}`);
+        const itemCarrito = carrito.find(item => item.id === id);
+        if (itemCarrito) {
+            if (itemCarrito.cantidad > 1) {
+                itemCarrito.cantidad--;
+            } else {
+                const indice = carrito.findIndex(item => item.id === id);
+                carrito.splice(indice, 1);
+            }
+            console.log(`Eliminado del carrito: ${itemCarrito.nombre}`);
             actualizarIconoCarrito();
+            guardarCarrito();
         } else {
             console.log('Instrumento no encontrado en el carrito');
         }
+    }
+
+    function vaciarCarrito() {
+        carrito = [];
+        console.log('Carrito vaciado');
+        actualizarIconoCarrito();
+        guardarCarrito();
+        mostrarDetallesCarrito();
     }
 
     function mostrarCarrito() {
@@ -49,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function calcularTotal() {
-        const total = carrito.reduce((sum, instr) => sum + instr.precio, 0);
+        const total = carrito.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
         console.log(`Total del carrito: $${total}`);
         return total;
     }
@@ -57,8 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function finalizarCompra() {
         if (carrito.length > 0) {
             console.log('Compra finalizada. Gracias por su compra.');
-            carrito.length = 0; // Vaciar el carrito
+            carrito = [];
             actualizarIconoCarrito();
+            guardarCarrito();
+            mostrarDetallesCarrito();
         } else {
             console.log('El carrito está vacío.');
         }
@@ -87,10 +113,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const carritoTotal = document.getElementById('carrito-total');
         if (carritoItems && carritoTotal) {
             carritoItems.innerHTML = '';
-            carrito.forEach(instr => {
-                const item = document.createElement('div');
-                item.textContent = `${instr.nombre} - $${instr.precio}`;
-                carritoItems.appendChild(item);
+            carrito.forEach(item => {
+                const instr = instrumentos.find(instr => instr.id === item.id);
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('carrito-item');
+                const img = document.createElement('img');
+                img.src = instr.imagen;
+                img.alt = instr.nombre;
+                img.classList.add('carrito-item-img');
+                const details = document.createElement('div');
+                details.classList.add('carrito-item-details');
+                details.textContent = `${instr.nombre} - $${instr.precio} x ${item.cantidad}`;
+                const removeButton = document.createElement('button');
+                removeButton.textContent = '-';
+                removeButton.onclick = () => {
+                    eliminarDelCarrito(instr.id);
+                    mostrarDetallesCarrito();
+                };
+                const addButton = document.createElement('button');
+                addButton.textContent = '+';
+                addButton.onclick = () => {
+                    agregarAlCarrito(instr.id);
+                    mostrarDetallesCarrito();
+                };
+                itemDiv.appendChild(img);
+                itemDiv.appendChild(details);
+                itemDiv.appendChild(removeButton);
+                itemDiv.appendChild(addButton);
+                carritoItems.appendChild(itemDiv);
             });
             carritoTotal.textContent = calcularTotal();
         }
@@ -105,6 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.ordenarCarrito = ordenarCarrito;
     window.filtrarInstrumentos = filtrarInstrumentos;
     window.mostrarDetallesCarrito = mostrarDetallesCarrito;
+    window.vaciarCarrito = vaciarCarrito;
 
     // Ciclo while para mostrar instrumentos en la consola
     let i = 0;
@@ -135,4 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.endsWith('carrito.html')) {
         mostrarDetallesCarrito();
     }
+
+    // Actualizar el icono del carrito al cargar la página
+    actualizarIconoCarrito();
 });
