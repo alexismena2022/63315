@@ -64,3 +64,26 @@ footer {
     margin: 10px;
     display: block;
 }
+
+/* Media Queries */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .recuadro img {
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .recuadro img {
+        max-width: 100%;
+    }
+
+    footer {
+        position: static;
+        padding: 20px 0;
+    }
+}
