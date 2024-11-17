@@ -70,7 +70,7 @@ footer {
     padding: 10px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    flex: 1 1 30%; /* Ajustar el tamaño de los elementos */
+    flex: 0 0 33.33%; /* Ajustar el tamaño de los elementos */
 }
 
 .carousel img {
@@ -135,14 +135,14 @@ button.next {
 
     .carousel .instrumento {
         max-width: 45%;
-        flex: 1 1 45%; /* Ajustar el tamaño de los elementos */
+        flex: 0 0 45%; /* Ajustar el tamaño de los elementos */
     }
 }
 
 @media (max-width: 480px) {
     .carousel .instrumento {
         max-width: 100%;
-        flex: 1 1 100%; /* Ajustar el tamaño de los elementos */
+        flex: 0 0 100%; /* Ajustar el tamaño de los elementos */
     }
 
     footer {

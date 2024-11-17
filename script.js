@@ -9,7 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 6, nombre: 'Batería Yamaha', precio: 100000, imagen: 'images/baterias/yamaha.jpg' },
         { id: 7, nombre: 'Bajo Cort', precio: 110000, imagen: 'images/bajos/cort.jpg' },
         { id: 8, nombre: 'Bajo Fender', precio: 120000, imagen: 'images/bajos/fender.jpg' },
-        { id: 9, nombre: 'Bajo Warwick', precio: 130000, imagen: 'images/bajos/warwick.jpg' }
+        { id: 9, nombre: 'Bajo Warwick', precio: 130000, imagen: 'images/bajos/warwick.jpg' },
+        { id: 10, nombre: 'Guitarra Texas', precio: 60000, imagen: 'images/guitarras/texas.jpg' },
+        { id: 11, nombre: 'Guitarra Cort', precio: 55000, imagen: 'images/guitarras/cort.jpg' },
+        { id: 12, nombre: 'Guitarra Yakinogua', precio: 65000, imagen: 'images/guitarras/yakinogua.jpg' },
+        { id: 13, nombre: 'Batería Tama', precio: 110000, imagen: 'images/baterias/tama.jpg' },
+        { id: 14, nombre: 'Batería Truth', precio: 120000, imagen: 'images/baterias/truth.jpg' },
+        { id: 15, nombre: 'Batería Sonor', precio: 130000, imagen: 'images/baterias/sonor.jpg' },
+        { id: 16, nombre: 'Bajo Vision', precio: 140000, imagen: 'images/bajos/vision.jpg' },
+        { id: 17, nombre: 'Bajo Squier', precio: 150000, imagen: 'images/bajos/squier.jpg' },
+        { id: 18, nombre: 'Bajo Hidden', precio: 160000, imagen: 'images/bajos/hidden.jpg' }
     ];
 
     // Funcionalidad básica de carrito de compras
@@ -146,6 +155,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function moveCarousel(section, direction) {
+        const carousel = document.querySelector(`.carousel .imagenes.${section}`);
+        const items = carousel.querySelectorAll('.instrumento');
+        const itemWidth = items[0].clientWidth;
+        const currentTransform = getComputedStyle(carousel).transform;
+        const matrixValues = currentTransform.match(/matrix.*\((.+)\)/);
+        const currentTranslateX = matrixValues ? parseFloat(matrixValues[1].split(', ')[4]) : 0;
+        const newTranslateX = currentTranslateX + direction * itemWidth;
+        const maxTranslateX = -(itemWidth * (items.length - 1));
+        if (newTranslateX <= 0 && newTranslateX >= maxTranslateX) {
+            carousel.style.transform = `translateX(${newTranslateX}px)`;
+        }
+    }
+
+    function autoMoveCarousel(section) {
+        setInterval(() => {
+            moveCarousel(section, 1);
+        }, 3000); // Mueve el carrusel cada 3 segundos
+    }
+
     // Exponer funciones globalmente para uso en la consola y eventos
     window.agregarAlCarrito = agregarAlCarrito;
     window.eliminarDelCarrito = eliminarDelCarrito;
@@ -156,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.filtrarInstrumentos = filtrarInstrumentos;
     window.mostrarDetallesCarrito = mostrarDetallesCarrito;
     window.vaciarCarrito = vaciarCarrito;
+    window.moveCarousel = moveCarousel;
 
     // Ciclo while para mostrar instrumentos en la consola
     let i = 0;
@@ -189,4 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Actualizar el icono del carrito al cargar la página
     actualizarIconoCarrito();
+
+    // Iniciar el movimiento automático del carrusel
+    autoMoveCarousel('guitarras');
+    autoMoveCarousel('baterias');
+    autoMoveCarousel('bajos');
 });
