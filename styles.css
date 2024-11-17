@@ -29,6 +29,7 @@ nav ul li a {
 
 main {
     padding: 20px;
+    margin-bottom: 100px; /* Añadir margen inferior para evitar solapamiento con el pie de página */
 }
 
 section {
@@ -40,7 +41,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
+    position: relative; /* Cambiar de fixed a relative */
     width: 100%;
     bottom: 0;
 }
@@ -61,11 +62,13 @@ footer {
 .recuadro .instrumento {
     text-align: center;
     margin: 10px;
+    flex: 1 1 30%; /* Ajustar el tamaño de los elementos */
+    box-sizing: border-box;
 }
 
 .recuadro img {
-    width: 200px; /* Establecer un ancho fijo */
-    height: 200px; /* Establecer una altura fija */
+    max-width: 100%; /* Ajustar el ancho al 100% del contenedor */
+    height: auto; /* Mantener la proporción de la imagen */
     object-fit: cover; /* Asegurarse de que la imagen se ajuste al contenedor */
     display: block;
 }
@@ -100,16 +103,18 @@ button {
 
     .recuadro .instrumento {
         max-width: 45%;
+        flex: 1 1 45%; /* Ajustar el tamaño de los elementos */
     }
 }
 
 @media (max-width: 480px) {
     .recuadro .instrumento {
         max-width: 100%;
+        flex: 1 1 100%; /* Ajustar el tamaño de los elementos */
     }
 
     footer {
-        position: static;
+        position: static; /* Cambiar de fixed a static */
         padding: 20px 0;
     }
 }
