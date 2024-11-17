@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Lista de instrumentos musicales
     const instrumentos = [
-        { id: 1, nombre: 'Guitarra Eléctrica', precio: 500000 },
-        { id: 2, nombre: 'Bajo Electrico', precio: 45000 },
-        { id: 3, nombre: 'Batería', precio: 70000 }
+        { id: 1, nombre: 'Guitarra Gibson', precio: 500000 },
+        { id: 2, nombre: 'Guitarra Ibanez Gio', precio: 45000 },
+        { id: 3, nombre: 'Guitarra Jackson', precio: 70000 },
+        { id: 4, nombre: 'Batería Musical Premium', precio: 80000 },
+        { id: 5, nombre: 'Batería Pearl', precio: 90000 },
+        { id: 6, nombre: 'Batería Yamaha', precio: 100000 },
+        { id: 7, nombre: 'Bajo Cort', precio: 110000 },
+        { id: 8, nombre: 'Bajo Fender', precio: 120000 },
+        { id: 9, nombre: 'Bajo Warwick', precio: 130000 }
     ];
 
     // Funcionalidad básica de carrito de compras
@@ -65,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return resultados;
     }
 
-    // Exponer funciones globalmente para uso en la consola
+    // Exponer funciones globalmente para uso en la consola y eventos
     window.agregarAlCarrito = agregarAlCarrito;
     window.eliminarDelCarrito = eliminarDelCarrito;
     window.mostrarCarrito = mostrarCarrito;
@@ -82,11 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Buscar un instrumento específico usando find
-    const instrumentoBuscado = instrumentos.find(instr => instr.nombre === 'Bajo Electrico');
+    const instrumentoBuscado = instrumentos.find(instr => instr.nombre === 'Bajo Fender');
     console.log('Instrumento encontrado:', instrumentoBuscado);
 
     // Buscar el índice de un instrumento específico usando findIndex
-    const indiceInstrumento = instrumentos.findIndex(instr => instr.nombre === 'Batería Acústica');
+    const indiceInstrumento = instrumentos.findIndex(instr => instr.nombre === 'Batería Pearl');
     console.log('Índice del instrumento encontrado:', indiceInstrumento);
 
     // Menú para trabajar en consola

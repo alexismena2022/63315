@@ -58,10 +58,14 @@ footer {
     flex-wrap: wrap;
 }
 
-.recuadro img {
-    max-width: 30%;
-    height: auto;
+.recuadro .instrumento {
+    text-align: center;
     margin: 10px;
+}
+
+.recuadro img {
+    max-width: 100%;
+    height: auto;
     display: block;
 }
 
@@ -72,13 +76,13 @@ footer {
         margin: 10px 0;
     }
 
-    .recuadro img {
+    .recuadro .instrumento {
         max-width: 45%;
     }
 }
 
 @media (max-width: 480px) {
-    .recuadro img {
+    .recuadro .instrumento {
         max-width: 100%;
     }
 
