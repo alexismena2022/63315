@@ -53,13 +53,18 @@ footer {
     text-align: center;
 }
 
-.recuadro .imagenes {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
-.recuadro .instrumento {
+.carousel .imagenes {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel .instrumento {
     text-align: center;
     margin: 10px;
     padding: 10px;
@@ -68,11 +73,40 @@ footer {
     flex: 1 1 30%; /* Ajustar el tamaño de los elementos */
 }
 
-.recuadro img {
+.carousel img {
     max-width: 100%; /* Ajustar el ancho al 100% del contenedor */
     height: auto; /* Mantener la proporción de la imagen */
     object-fit: cover; /* Asegurarse de que la imagen se ajuste al contenedor */
     display: block;
+}
+
+button {
+    margin-left: 10px;
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button.prev {
+    left: 0;
+}
+
+button.next {
+    right: 0;
+}
+
+.descripcion {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
 }
 
 .carrito-item {
@@ -82,24 +116,14 @@ footer {
 }
 
 .carrito-item-img {
-    width: 50px;
-    height: 50px;
+    width: 50px; /* Ajustar el tamaño de las imágenes en el carrito */
+    height: 50px; /* Ajustar el tamaño de las imágenes en el carrito */
     object-fit: cover;
     margin-right: 10px;
 }
 
 .carrito-item-details {
     flex-grow: 1;
-}
-
-button {
-    margin-left: 10px;
-}
-
-.descripcion {
-    font-size: 0.9em;
-    color: #666;
-    margin-top: 10px;
 }
 
 /* Media Queries */
@@ -109,14 +133,14 @@ button {
         margin: 10px 0;
     }
 
-    .recuadro .instrumento {
+    .carousel .instrumento {
         max-width: 45%;
         flex: 1 1 45%; /* Ajustar el tamaño de los elementos */
     }
 }
 
 @media (max-width: 480px) {
-    .recuadro .instrumento {
+    .carousel .instrumento {
         max-width: 100%;
         flex: 1 1 100%; /* Ajustar el tamaño de los elementos */
     }
