@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Detalle del Producto</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="carrito.html" id="carrito-icono" target="_blank">Carrito (<span id="carrito-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="detalle-producto" class="recuadro">
+            <h2>Nombre del Producto</h2>
+            <img src="images/producto.jpg" alt="Nombre del Producto">
+            <p class="descripcion">Descripción detallada del producto.</p>
+            <p>Precio: $XX,XXX</p>
+            <button onclick="agregarAlCarrito(id)">Agregar al Carrito</button>
+        </section>
+    </main>
+    <footer>
+        <p>Para más información, contáctanos en <a href="mailto:info@instrumentosmusicales.com">info@instrumentosmusicales.com</a></p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

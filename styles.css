@@ -75,9 +75,12 @@ footer {
 
 .carousel img {
     max-width: 100%; /* Ajustar el ancho al 100% del contenedor */
+    max-height: 350px; /* Establecer un tamaño máximo para las imágenes */
     height: auto; /* Mantener la proporción de la imagen */
     object-fit: cover; /* Asegurarse de que la imagen se ajuste al contenedor */
     display: block;
+    margin-left: auto; /* Centrar horizontalmente */
+    margin-right: auto; /* Centrar horizontalmente */
 }
 
 button {
@@ -149,4 +152,14 @@ button.next {
         position: static; /* Cambiar de fixed a static */
         padding: 20px 0;
     }
+}
+
+img {
+    max-width: 100%; /* Ajustar el ancho al 100% del contenedor */
+    max-height: 400px; /* Establecer un tamaño máximo para las imágenes */
+    height: auto; /* Mantener la proporción de la imagen */
+    object-fit: cover; /* Asegurarse de que la imagen se ajuste al contenedor */
+    display: block;
+    margin-left: auto; /* Centrar horizontalmente */
+    margin-right: auto; /* Centrar horizontalmente */
 }
