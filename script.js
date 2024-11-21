@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function autoMoveCarousel(section) {
         setInterval(() => {
             moveCarousel(section, 1);
-        }, 3000); // Mueve el carrusel cada 3 segundos
+        }, 5000); 
     }
 
     // Exponer funciones globalmente para uso en la consola y eventos

@@ -29,7 +29,7 @@ nav ul li a {
 
 main {
     padding: 20px;
-    margin-bottom: 100px; /* Añadir margen inferior para evitar solapamiento con el pie de página */
+    margin-bottom: 100px; 
 }
 
 section {
@@ -41,7 +41,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: relative; /* Cambiar de fixed a relative */
+    position: relative; 
     width: 100%;
     bottom: 0;
 }
@@ -70,17 +70,17 @@ footer {
     padding: 10px;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    flex: 0 0 33.33%; /* Ajustar el tamaño de los elementos */
+    flex: 0 0 33.33%; 
 }
 
 .carousel img {
-    max-width: 100%; /* Ajustar el ancho al 100% del contenedor */
-    max-height: 350px; /* Establecer un tamaño máximo para las imágenes */
-    height: auto; /* Mantener la proporción de la imagen */
-    object-fit: cover; /* Asegurarse de que la imagen se ajuste al contenedor */
+    max-width: 100%; 
+    max-height: 350px; 
+    height: auto; 
+    object-fit: cover; 
     display: block;
-    margin-left: auto; /* Centrar horizontalmente */
-    margin-right: auto; /* Centrar horizontalmente */
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
 button {
@@ -119,8 +119,8 @@ button.next {
 }
 
 .carrito-item-img {
-    width: 50px; /* Ajustar el tamaño de las imágenes en el carrito */
-    height: 50px; /* Ajustar el tamaño de las imágenes en el carrito */
+    width: 50px; 
+    height: 50px; 
     object-fit: cover;
     margin-right: 10px;
 }
@@ -138,30 +138,30 @@ button.next {
 
     .carousel .instrumento {
         max-width: 45%;
-        flex: 0 0 45%; /* Ajustar el tamaño de los elementos */
+        flex: 0 0 45%; 
     }
 }
 
 @media (max-width: 480px) {
     .carousel .instrumento {
         max-width: 100%;
-        flex: 0 0 100%; /* Ajustar el tamaño de los elementos */
+        flex: 0 0 100%; 
     }
 
     footer {
-        position: static; /* Cambiar de fixed a static */
+        position: static; 
         padding: 20px 0;
     }
 }
 
 img {
-    max-width: 100%; /* Ajustar el ancho al 100% del contenedor */
-    max-height: 400px; /* Establecer un tamaño máximo para las imágenes */
-    height: auto; /* Mantener la proporción de la imagen */
-    object-fit: cover; /* Asegurarse de que la imagen se ajuste al contenedor */
+    max-width: 100%; 
+    max-height: 400px; 
+    height: auto; 
+    object-fit: cover; 
     display: block;
-    margin-left: auto; /* Centrar horizontalmente */
-    margin-right: auto; /* Centrar horizontalmente */
+    margin-left: auto; 
+    margin-right: auto; 
 }
 
 /* Animación de fuego */
