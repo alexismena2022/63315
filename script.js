@@ -218,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mostrarDetallesCarrito();
     }
 
+
     // Actualizar el icono del carrito al cargar la página
     actualizarIconoCarrito();
 
