@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 18, nombre: 'Bajo Hidden', precio: 160000, imagen: 'images/bajos/hidden.jpg' }
     ];
 
-    // Funcionalidad básica de carrito de compras
+    // Funcionalidad de carrito de compras
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     function actualizarIconoCarrito() {
