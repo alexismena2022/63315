@@ -23,7 +23,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: github-pages
-        path: ./dist # Cambia este path por el directorio donde se encuentran tus archivos estáticos        
+        path: ./ # Cambia este path por el directorio donde se encuentran tus archivos estáticos        
     
     - name: Configurar GitHub Pages
       uses: actions/configure-pages@v3
