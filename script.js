@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 18, nombre: 'Bajo Hidden', precio: 160000, imagen: 'images/bajos/hidden.jpg' }
     ];
 
-    // Funcionalidad básica de carrito de compras
+    // Funcionalidad de carrito de compras
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     function actualizarIconoCarrito() {
@@ -30,11 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
             carritoCount.textContent = carrito.reduce((sum, item) => sum + item.cantidad, 0);
         }
     }
-
+    // uso de JSON y localstorage
     function guardarCarrito() {
         localStorage.setItem('carrito', JSON.stringify(carrito));
     }
-
+        // Deteccion de eventos del usuario.
     function agregarAlCarrito(id) {
         const instrumento = instrumentos.find(instr => instr.id === id);
         if (instrumento) {
@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function finalizarCompra() {
         if (carrito.length > 0) {
+            alert('Gracias por su compra.');
             console.log('Compra finalizada. Gracias por su compra.');
             carrito = [];
             actualizarIconoCarrito();
@@ -116,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Resultados del filtro:', resultados);
         return resultados;
     }
-
+        // Modificacion del DOM
     function mostrarDetallesCarrito() {
         const carritoItems = document.getElementById('carrito-items');
         const carritoTotal = document.getElementById('carrito-total');
@@ -172,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function autoMoveCarousel(section) {
         setInterval(() => {
             moveCarousel(section, 1);
-        }, 3000); // Mueve el carrusel cada 3 segundos
+        }, 5000); 
     }
 
     // Exponer funciones globalmente para uso en la consola y eventos
@@ -216,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.endsWith('carrito.html')) {
         mostrarDetallesCarrito();
     }
+
 
     // Actualizar el icono del carrito al cargar la página
     actualizarIconoCarrito();
