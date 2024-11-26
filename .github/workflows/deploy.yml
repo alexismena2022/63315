@@ -6,8 +6,9 @@ on:
       - feature/testing
 
 permissions:
-  pages: write   # Permiso necesario para desplegar en GitHub Pages
-  contents: read
+  pages: write        # Permiso necesario para desplegar en GitHub Pages
+  contents: read      # Permiso necesario para acceder al repositorio
+  id-token: write     # Permiso necesario para usar OpenID Connect (OIDC)
 
 jobs:
   deploy:
@@ -21,4 +22,3 @@ jobs:
       uses: actions/deploy-pages@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        emit_telemetry: false  # Si no deseas enviar telemetría
