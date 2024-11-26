@@ -1,16 +1,14 @@
-name: Deploy a GitHub Pages
+name: Deploy to GitHub Pages
 
-# Evento que activa el workflow
 on:
-  push: # Cuando subas cambios
+  push:
     branches:
-      - feature/testing # Solo para la feature/testing
+      - feature/testing
 
-permissions: # Establece permisos para el token
-  id-token: write
+permissions:
+  pages: write   # Permiso necesario para desplegar en GitHub Pages
   contents: read
 
-# Job para el despliegue
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -19,18 +17,8 @@ jobs:
     - name: Clonar el repositorio
       uses: actions/checkout@v3
 
-    - name: Subir artefacto para despliegue
-      uses: actions/upload-artifact@v3
-      with:
-        name: github-pages
-        path: ./ # Cambia este path por el directorio donde se encuentran tus archivos estáticos        
-    
-    - name: Configurar GitHub Pages
-      uses: actions/configure-pages@v3
-
     - name: Desplegar en GitHub Pages
       uses: actions/deploy-pages@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: feature/testing
-        folder: ./
+        emit_telemetry: false  # Si no deseas enviar telemetría
