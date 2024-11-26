@@ -30,11 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
             carritoCount.textContent = carrito.reduce((sum, item) => sum + item.cantidad, 0);
         }
     }
-
+    // uso de JSON y localstorage
     function guardarCarrito() {
         localStorage.setItem('carrito', JSON.stringify(carrito));
     }
-
+        // Deteccion de eventos del usuario.
     function agregarAlCarrito(id) {
         const instrumento = instrumentos.find(instr => instr.id === id);
         if (instrumento) {
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Resultados del filtro:', resultados);
         return resultados;
     }
-
+        // Modificacion del DOM
     function mostrarDetallesCarrito() {
         const carritoItems = document.getElementById('carrito-items');
         const carritoTotal = document.getElementById('carrito-total');
