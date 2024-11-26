@@ -6,6 +6,10 @@ on:
     branches:
       - feature/testing # Solo para la feature/testing
 
+permissions: # Establece permisos para el token
+  id-token: write
+  contents: read
+
 # Job para el despliegue
 jobs:
   deploy:
