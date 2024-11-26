@@ -1,0 +1,22 @@
+name: Deploy a GitHub Pages
+
+# Evento que activa el workflow
+on:
+  push: # Cuando subas cambios
+    branches:
+      - feature/testing # Solo para la feature/testing
+
+# Job para el despliegue
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v3
+
+    - name: Configurar GitHub Pages
+      uses: actions/configure-pages@v3
+
+    - name: Desplegar en GitHub Pages
+      uses: actions/deploy-pages@v1
