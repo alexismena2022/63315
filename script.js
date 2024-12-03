@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function finalizarCompra() {
         if (carrito.length > 0) {
-            alert('Gracias por su compra.');
+            alert('Gracias por su compra. Le llegará un correo con los detalles de su compra.');
             console.log('Compra finalizada. Gracias por su compra.');
             carrito = [];
             actualizarIconoCarrito();
