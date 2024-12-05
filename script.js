@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+document.getElementById('carrito-count').addEventListener('click', function() {
+estilizarElementoConRetardo(this, 'resaltar'); // Añadir clase 'resaltar' al elemento y eliminarla después de 2 segundos
+});
 
     // Lista de instrumentos musicales
     const instrumentos = [
@@ -87,20 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`Total del carrito: $${total}`);
         return total;
     }
+    // Simulación de un proceso asincrónico con Promise
+    function procesarCompra() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const compraExitosa = carrito.length > 0;
+                if (compraExitosa) {
+                    resolve('Compra procesada con éxito');
+                } else {
+                    reject('No hay productos en el carrito');
+                }
+            }, 2000); // Simula un proceso de 2 segundos
+    });
+}
 
-    // function finalizarCompra() {
-    //     if (carrito.length > 0) {
-    //         alert('Gracias por su compra. Le llegará un correo con los detalles de su compra.');
-    //         console.log('Compra finalizada. Gracias por su compra.');
-    //         carrito = [];
-    //         actualizarIconoCarrito();
-    //         guardarCarrito();
-    //         mostrarDetallesCarrito();
-    //     } else {
-    //         alert('El carrito está vacío.');
-    //         console.log('El carrito está vacío.');
-    //     }
-    // }
     function finalizarCompra() {
         if (carrito.length > 0) {
             Swal.fire({
@@ -251,3 +254,9 @@ document.addEventListener('DOMContentLoaded', () => {
     autoMoveCarousel('bajos');
 });
 
+function estilizarElementoConRetardo(elemento, clase) {
+    elemento.classList.add(clase); // Añadir clase para aplicar el estilo
+    setTimeout(() => {
+        elemento.classList.remove(clase); // Remover la clase después de 2 segundos
+    }, 2000);
+}
