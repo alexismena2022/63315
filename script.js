@@ -185,18 +185,27 @@ estilizarElementoConRetardo(this, 'resaltar'); // Añadir clase 'resaltar' al el
 
     function moveCarousel(section, direction) {
         const carousel = document.querySelector(`.carousel .imagenes.${section}`);
+        if (!carousel) return;
+    
         const items = carousel.querySelectorAll('.instrumento');
+        if (items.length === 0) return;
+    
         const itemWidth = items[0].clientWidth;
         const currentTransform = getComputedStyle(carousel).transform;
         const matrixValues = currentTransform.match(/matrix.*\((.+)\)/);
         const currentTranslateX = matrixValues ? parseFloat(matrixValues[1].split(', ')[4]) : 0;
         const newTranslateX = currentTranslateX + direction * itemWidth;
         const maxTranslateX = -(itemWidth * (items.length - 1));
+    
         if (newTranslateX <= 0 && newTranslateX >= maxTranslateX) {
             carousel.style.transform = `translateX(${newTranslateX}px)`;
+        } else if (newTranslateX > 0) {
+            carousel.style.transform = `translateX(0px)`;
+        } else if (newTranslateX < maxTranslateX) {
+            carousel.style.transform = `translateX(${maxTranslateX}px)`;
         }
     }
-
+    
     function autoMoveCarousel(section) {
         setInterval(() => {
             moveCarousel(section, 1);
@@ -248,7 +257,7 @@ estilizarElementoConRetardo(this, 'resaltar'); // Añadir clase 'resaltar' al el
     // Actualizar el icono del carrito al cargar la página
     actualizarIconoCarrito();
 
-    // Iniciar el movimiento automático del carrusel
+// Iniciar el movimiento automático del carrusel
     autoMoveCarousel('guitarras');
     autoMoveCarousel('baterias');
     autoMoveCarousel('bajos');

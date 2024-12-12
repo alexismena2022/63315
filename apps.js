@@ -18,7 +18,8 @@ function App() {
         </nav>
       </header>
       <main>
-        {/* Tu contenido principal */}
+        {
+      }
       </main>
       <ToastContainer />
     </div>
