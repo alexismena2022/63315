@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // Cargar datos de instrumentos usando Fetch
+    // Cargar datos de instrumentos usando Fetch desde un JSON local
     let instrumentos = [];
     fetch('instrumentos.json')
         .then(response => response.json())
