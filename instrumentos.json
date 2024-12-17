@@ -1,0 +1,20 @@
+[
+    { "id": 1, "nombre": "Guitarra Gibson", "precio": 500000, "imagen": "images/guitarras/gibson.jpg" },
+    { "id": 2, "nombre": "Guitarra Ibanez Gio", "precio": 45000, "imagen": "images/guitarras/ibanez_gio.jpg" },
+    { "id": 3, "nombre": "Guitarra Jackson", "precio": 70000, "imagen": "images/guitarras/jackson.jpg" },
+    { "id": 4, "nombre": "Batería Musical Premium", "precio": 80000, "imagen": "images/baterias/bateria-musical-premium.jpg" },
+    { "id": 5, "nombre": "Batería Pearl", "precio": 90000, "imagen": "images/baterias/pearl.jpg" },
+    { "id": 6, "nombre": "Batería Yamaha", "precio": 100000, "imagen": "images/baterias/yamaha.jpg" },
+    { "id": 7, "nombre": "Bajo Cort", "precio": 110000, "imagen": "images/bajos/cort.jpg" },
+    { "id": 8, "nombre": "Bajo Fender", "precio": 120000, "imagen": "images/bajos/fender.jpg" },
+    { "id": 9, "nombre": "Bajo Warwick", "precio": 130000, "imagen": "images/bajos/warwick.jpg" },
+    { "id": 10, "nombre": "Guitarra Texas", "precio": 60000, "imagen": "images/guitarras/texas.jpg" },
+    { "id": 11, "nombre": "Guitarra Cort", "precio": 55000, "imagen": "images/guitarras/cort.jpg" },
+    { "id": 12, "nombre": "Guitarra Yakinogua", "precio": 65000, "imagen": "images/guitarras/yakinogua.jpg" },
+    { "id": 13, "nombre": "Batería Tama", "precio": 110000, "imagen": "images/baterias/tama.jpg" },
+    { "id": 14, "nombre": "Batería Truth", "precio": 120000, "imagen": "images/baterias/truth.jpg" },
+    { "id": 15, "nombre": "Batería Sonor", "precio": 130000, "imagen": "images/baterias/sonor.jpg" },
+    { "id": 16, "nombre": "Bajo Vision", "precio": 140000, "imagen": "images/bajos/vision.jpg" },
+    { "id": 17, "nombre": "Bajo Squier", "precio": 150000, "imagen": "images/bajos/squier.jpg" },
+    { "id": 18, "nombre": "Bajo Hidden", "precio": 160000, "imagen": "images/bajos/hidden.jpg" }
+]
