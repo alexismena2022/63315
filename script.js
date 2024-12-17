@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+document.getElementById('carrito-count').addEventListener('click', function() {
+estilizarElementoConRetardo(this, 'resaltar'); // Añadir clase 'resaltar' al elemento y eliminarla después de 2 segundos
+});
+
     // Lista de instrumentos musicales
     const instrumentos = [
         { id: 1, nombre: 'Guitarra Gibson', precio: 500000, imagen: 'images/guitarras/gibson.jpg' },
@@ -30,11 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
             carritoCount.textContent = carrito.reduce((sum, item) => sum + item.cantidad, 0);
         }
     }
-    // uso de JSON y localstorage
+
     function guardarCarrito() {
         localStorage.setItem('carrito', JSON.stringify(carrito));
     }
-        // Deteccion de eventos del usuario.
+
     function agregarAlCarrito(id) {
         const instrumento = instrumentos.find(instr => instr.id === id);
         if (instrumento) {
@@ -86,17 +90,40 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`Total del carrito: $${total}`);
         return total;
     }
+    // Simulación de un proceso asincrónico con Promise
+    function procesarCompra() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                const compraExitosa = carrito.length > 0;
+                if (compraExitosa) {
+                    resolve('Compra procesada con éxito');
+                } else {
+                    reject('No hay productos en el carrito');
+                }
+            }, 2000); // Simula un proceso de 2 segundos
+    });
+}
 
     function finalizarCompra() {
         if (carrito.length > 0) {
-            alert('Gracias por su compra.');
-            console.log('Compra finalizada. Gracias por su compra.');
-            carrito = [];
-            actualizarIconoCarrito();
-            guardarCarrito();
-            mostrarDetallesCarrito();
+            Swal.fire({
+                title: 'Compra finalizada',
+                text: 'Gracias por su compra. Le llegará un correo con los detalles de su compra.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                carrito = [];
+                actualizarIconoCarrito();
+                guardarCarrito();
+                mostrarDetallesCarrito();
+            });
         } else {
-            console.log('El carrito está vacío.');
+            Swal.fire({
+                title: 'Carrito vacío',
+                text: 'No hay productos en el carrito.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
         }
     }
 
@@ -117,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Resultados del filtro:', resultados);
         return resultados;
     }
-        // Modificacion del DOM
+
     function mostrarDetallesCarrito() {
         const carritoItems = document.getElementById('carrito-items');
         const carritoTotal = document.getElementById('carrito-total');
@@ -158,22 +185,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function moveCarousel(section, direction) {
         const carousel = document.querySelector(`.carousel .imagenes.${section}`);
+        if (!carousel) return;
+    
         const items = carousel.querySelectorAll('.instrumento');
+        if (items.length === 0) return;
+    
         const itemWidth = items[0].clientWidth;
         const currentTransform = getComputedStyle(carousel).transform;
         const matrixValues = currentTransform.match(/matrix.*\((.+)\)/);
         const currentTranslateX = matrixValues ? parseFloat(matrixValues[1].split(', ')[4]) : 0;
         const newTranslateX = currentTranslateX + direction * itemWidth;
         const maxTranslateX = -(itemWidth * (items.length - 1));
+    
         if (newTranslateX <= 0 && newTranslateX >= maxTranslateX) {
             carousel.style.transform = `translateX(${newTranslateX}px)`;
+        } else if (newTranslateX > 0) {
+            carousel.style.transform = `translateX(0px)`;
+        } else if (newTranslateX < maxTranslateX) {
+            carousel.style.transform = `translateX(${maxTranslateX}px)`;
         }
     }
-
+    
     function autoMoveCarousel(section) {
         setInterval(() => {
             moveCarousel(section, 1);
-        }, 5000); 
+        }, 5000);
     }
 
     // Exponer funciones globalmente para uso en la consola y eventos
@@ -218,12 +254,18 @@ document.addEventListener('DOMContentLoaded', () => {
         mostrarDetallesCarrito();
     }
 
-
     // Actualizar el icono del carrito al cargar la página
     actualizarIconoCarrito();
 
-    // Iniciar el movimiento automático del carrusel
+// Iniciar el movimiento automático del carrusel
     autoMoveCarousel('guitarras');
     autoMoveCarousel('baterias');
     autoMoveCarousel('bajos');
 });
+
+function estilizarElementoConRetardo(elemento, clase) {
+    elemento.classList.add(clase); // Añadir clase para aplicar el estilo
+    setTimeout(() => {
+        elemento.classList.remove(clase); // Remover la clase después de 2 segundos
+    }, 2000);
+}
