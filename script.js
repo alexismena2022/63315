@@ -205,9 +205,18 @@ document.addEventListener('DOMContentLoaded', () => {
             instrumentos.forEach(instr => {
                 console.log(`Instrumento: ${instr.nombre}, Precio: ${instr.precio}`);
             });
+
+            // Ciclo while para mostrar instrumentos en la consola
+            let i = 0;
+            while (i < instrumentos.length) {
+                console.log(`Instrumento: ${instrumentos[i].nombre}, Precio: ${instrumentos[i].precio}`);
+                i++;
+            }
+
             // Buscar un instrumento específico usando find
             const instrumentoBuscado = instrumentos.find(instr => instr.nombre === 'Bajo Fender');
             console.log('Instrumento encontrado:', instrumentoBuscado);
+
             // Buscar el índice de un instrumento específico usando findIndex
             const indiceInstrumento = instrumentos.findIndex(instr => instr.nombre === 'Batería Pearl');
             console.log('Índice del instrumento encontrado:', indiceInstrumento);
