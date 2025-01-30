@@ -1,11 +1,13 @@
 name: Deploy to GitHub Pages
 
-event: push
-  branch: feature/testing
+on:
+  push:
+    branches: 
+      - feature/testing
 
-job:
-  name: cambios a testing
-    runs-on: ubuntu/latest
+jobs:
+  cambios_a_testing:
+    runs-on: ubuntu-latest
     steps:
       - name: actualizando repo
         run: echo "repositorio actualizado"
