@@ -2,23 +2,12 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
+    branches: 
       - feature/testing
 
-permissions:
-  pages: write        # Permiso necesario para desplegar en GitHub Pages
-  contents: read      # Permiso necesario para acceder al repositorio
-  id-token: write     # Permiso necesario para usar OpenID Connect (OIDC)
-
 jobs:
-  deploy:
+  cambios_a_testing:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Clonar el repositorio
-      uses: actions/checkout@v3
-
-    - name: Desplegar en GitHub Pages
-      uses: actions/deploy-pages@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: actualizando repo
+        run: echo "repositorio actualizado"
