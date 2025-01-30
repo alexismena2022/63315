@@ -9,6 +9,9 @@ jobs:
   cambios_a_testing:
     runs-on: ubuntu-latest
     steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+      
       - name: instalar sudo si no esta instalado
         run: |
           sudo apt-get update
