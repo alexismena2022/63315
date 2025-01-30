@@ -9,5 +9,18 @@ jobs:
   cambios_a_testing:
     runs-on: ubuntu-latest
     steps:
+      - name: instalar sudo si no esta instalado
+        run: |
+          sudo apt-get update
+          sudo apt-get install sudo -y
+      
+      - name: instalar node js y npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22'
+      
+      - name: instalar dependencias
+        run: npm install    
+      
       - name: actualizando repo
         run: echo "repositorio actualizado"
