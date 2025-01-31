@@ -18,6 +18,7 @@
   "scripts": {
     "start": "webpack serve --open",
     "build": "webpack",
-    "build-react": "react-scripts build"
+    "build-react": "react-scripts build",
+    "test": "echo \"No hay pruebas definidas\""
   }
 }
