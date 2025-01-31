@@ -1,6 +1,23 @@
 {
   "dependencies": {
-    "react-toastify": "^10.0.6",
-    "sweetalert2": "^11.14.5"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-toastify": "^11.0.3",
+    "sweetalert2": "^11.6.13"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/preset-env": "^7.26.7",
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^9.2.1",
+    "react-scripts": "^3.0.1",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  },
+  "scripts": {
+    "start": "webpack serve --open",
+    "build": "webpack",
+    "build-react": "react-scripts build"
   }
 }
